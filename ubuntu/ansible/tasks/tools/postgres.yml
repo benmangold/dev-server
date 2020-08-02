@@ -1,0 +1,20 @@
+---
+
+- name: Ensure the PostgreSQL service is running
+  service: name=postgresql state=started enabled=yes
+
+- name: Create postgres database
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name: ubuntu
+
+- name: Connect to ubuntu database, create ubuntu user, and grant access
+  become: true
+  become_user: postgres
+  postgresql_user:
+    db: "{{ db_user }}"
+    name: "{{ db_name }}"
+    password: "{{ db_password }}"
+    encrypted: yes
+    priv: "ALL"

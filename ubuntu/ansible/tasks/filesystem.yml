@@ -1,0 +1,17 @@
+---
+
+- name: modify permissions and properties of a directory (or create it if it doesn't exist)
+  file:
+    path: /home/ubuntu
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
+
+- name: modify permissions and properties of a directory (or create it if it doesn't exist)
+  file:
+    path: /home/ubuntu/github
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
