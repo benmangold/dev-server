@@ -8,7 +8,7 @@ launch the ami as an ec2 instance and ssh in as user `ubuntu`
 
 ## commands
 
-`make verify` - verify packer json
+`make validate` - validate packer json
 
 `make build` - build ami via packer: requires `AWS_ACCESS_KEY_ID`  and `AWS_SECRET_ACCESS_KEY` to be available in environment
 
