@@ -14,7 +14,7 @@ launch the ami as an ec2 instance and ssh in as user `ubuntu`
 
 ## ci
 
-a new ami will be build with commits to `main`
+a new ami will build with commits to `main`
 
 ## special thanks
 
