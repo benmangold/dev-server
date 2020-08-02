@@ -2,7 +2,6 @@
 
 - name: Init zsh
   shell: touch /home/ubuntu/.zshrc
-  sudo: yes
 
 - name: Get zsh path
   command: which zsh 
