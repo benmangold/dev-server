@@ -1,6 +1,6 @@
 ---
 
-- name: Setup default git configuraiton
+- name: Setup default git configuration
   git_config:
     name="{{ item.name }}"
     scope=global
