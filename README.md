@@ -1,6 +1,8 @@
 # dev-server
 
-an ubuntu development environment built into an ami with packer and ansible
+ephemeral ubuntu development environment in an ami
+
+built with packer and ansible
 
 postgresql, docker, nodejs 12, oh-my-zsh, ready out of the box
 
