@@ -1,4 +1,4 @@
-# ubuntu-dev
+# dev-server
 
 an ubuntu development environment built into an ami with packer and ansible
 
