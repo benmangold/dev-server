@@ -3,16 +3,16 @@
 - name: Install hello-node smoke test
   git:
     repo: 'https://github.com/benmangold/hello-node.git'
-    dest: /home/ubuntu/github/hello-node
+    dest: /home/{{ user }}/github/hello-node
     version: dev-server-pg
-  become_user: ubuntu
+  become_user: "{{ user }}"
 
 - name: Install smoke test dependencies
   shell: npm i
   args:
-    chdir: /home/ubuntu/github/hello-node
+    chdir: /home/{{ user }}/github/hello-node
     
 - name: Smoke test nodejs pg connection
   shell: npm run start
   args:
-    chdir: /home/ubuntu/github/hello-node
+    chdir: /home/{{ user }}/github/hello-node

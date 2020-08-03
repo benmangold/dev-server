@@ -10,4 +10,4 @@
     - {name: "user.email", value: "{{ git_email }}" }
     - {name: "ui.color",   value: "True" }
   become: true
-  become_user: ubuntu
+  become_user: "{{ user }}"

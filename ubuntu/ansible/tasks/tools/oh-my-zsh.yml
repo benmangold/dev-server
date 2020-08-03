@@ -1,15 +1,15 @@
 ---
 
 - name: Init zsh
-  shell: touch /home/ubuntu/.zshrc
+  shell: touch /home/{{ user }}/.zshrc
 
 - name: Get zsh path
   command: which zsh 
   register: zsh_path
 
 - name: Switch to zsh
-  user: name=ubuntu shell={{ zsh_path.stdout }}
+  user: name={{ user }} shell={{ zsh_path.stdout }}
 
 - name: Install oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  become_user: ubuntu
+  become_user: "{{ user }}"

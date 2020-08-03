@@ -31,6 +31,8 @@ postgres_packages:
   - postgresql-contrib
   - python3-psycopg2
 
+user: ubuntu
+
 db_user: ubuntu
 db_name: ubuntu
 db_password: ubuntu
