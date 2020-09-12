@@ -1,0 +1,9 @@
+# # from GitHub, overriding the name and specifying a specific tag
+# - src: https://github.com/benmangold/dev-server-roles
+#   version: dev
+#   name: dev-server-roles
+
+# from GitHub
+- src: https://github.com/bennojoy/nginx
+
+- src: https://github.com/benmangold/dev-server-roles

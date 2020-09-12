@@ -4,15 +4,15 @@
   gather_facts: yes
   become: yes
 
-  vars_files:
-    - ./variables.yml
+  # vars_files:
+  #   - ./variables.yml
 
-  tasks:
-    - import_tasks: tasks/packages.yml
-    - import_tasks: tasks/tools/git.yml
-    - import_tasks: tasks/tools/docker.yml
-    - import_tasks: tasks/tools/postgres.yml
-    - import_tasks: tasks/tools/oh-my-zsh.yml
-    - import_tasks: tasks/tools/nodejs.yml
-    - import_tasks: tasks/filesystem.yml
-    - import_tasks: tasks/smoke-test.yml
+  # tasks:
+  #   - import_tasks: tasks/packages.yml
+  #   - import_tasks: tasks/tools/git.yml
+  #   - import_tasks: tasks/tools/docker.yml
+  #   - import_tasks: tasks/tools/postgres.yml
+  #   - import_tasks: tasks/tools/oh-my-zsh.yml
+  #   - import_tasks: tasks/tools/nodejs.yml
+  #   - import_tasks: tasks/filesystem.yml
+  #   - import_tasks: tasks/smoke-test.yml
