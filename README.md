@@ -8,7 +8,7 @@ postgresql, docker, nodejs 12, oh-my-zsh, ready out of the box
 
 launch the ami as an ec2 instance and ssh in as user `ubuntu`
 
-configured via [dev-server-role](https://github.com/benmangold/dev-server-role) and Ansible Galaxy
+configured via [benmangold/dev-server-role](https://github.com/benmangold/dev-server-role) and Ansible Galaxy
 
 ## commands
 
