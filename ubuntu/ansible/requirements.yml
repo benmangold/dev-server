@@ -3,7 +3,5 @@
 #   version: dev
 #   name: dev-server-roles
 
-# from GitHub
-- src: https://github.com/bennojoy/nginx
-
 - src: https://github.com/benmangold/dev-server-roles
+  name: dev-server-roles
