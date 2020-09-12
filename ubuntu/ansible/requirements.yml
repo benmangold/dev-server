@@ -4,4 +4,4 @@
 #   name: dev-server-roles
 
 - src: https://github.com/benmangold/dev-server-role
-  version: v0.0.2
+  version: v0.0.1
