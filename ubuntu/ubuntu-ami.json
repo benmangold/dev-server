@@ -39,6 +39,8 @@
       {
         "type": "ansible",
         "playbook_file": "ubuntu/ansible/playbook.yml",
+        "galaxy_file": "ubuntu/ansible/requirements.yml",
+        "galaxy_force_install": "true",
         "extra_arguments": [
             "-e",
             "ansible_python_interpreter=/usr/bin/python3"
@@ -58,6 +60,6 @@
           ],
           "pause_before": "1m"
       }
-  ]
+    ]
 }
-  
+
