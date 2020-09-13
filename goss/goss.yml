@@ -1,0 +1,29 @@
+command:
+  docker:
+    exit-status: 0
+    exec: "docker --version"
+  git:
+    exit-status: 0
+    exec: "git --version"
+  node:
+    exit-status: 0
+    exec: "node --version"
+  npm:
+    exit-status: 0
+    exec: "npm --version"
+  psql:
+    exit-status: 0
+    exec: "psql --version"
+  zsh:
+    exit-status: 0
+    exec: "zsh --version"
+  whoami:
+    exit-status: 0
+    exec: "whoami"
+    stdout:
+    - ubuntu
+  pwd:
+    exit-status: 0
+    exec: "pwd"
+    stdout:
+    - /home/ubuntu
