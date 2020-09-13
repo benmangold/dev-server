@@ -27,4 +27,3 @@ command:
     exec: "pwd"
     stdout:
     - /home/ubuntu
-  
