@@ -11,3 +11,6 @@
     - name: Dev Env Install
       import_role:
         name: dev-server-role
+    - name: Goss Install
+      import_role:
+        name: install-goss-role

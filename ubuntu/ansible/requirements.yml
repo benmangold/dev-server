@@ -2,3 +2,6 @@
 
 - src: https://github.com/benmangold/dev-server-role
   version: v0.0.1
+
+- src: https://github.com/benmangold/install-goss-role
+  version: v0.0.0
