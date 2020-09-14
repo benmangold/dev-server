@@ -25,4 +25,4 @@ destroy:
 
 .PHONY: connect
 connect:
-	./local/connect-to-instance.sh
+	./scripts/connect-to-instance.sh
