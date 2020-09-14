@@ -2,7 +2,7 @@
     "variables": {
         "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
         "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-        "aws_region": "us-east-1",
+        "aws_region": "us-east-2",
         "ami_name": "dev-server-{{timestamp}}",
         "disk_size": "25",
         "instance_type": "t2.medium"
@@ -15,7 +15,7 @@
         "type": "amazon-ebs",
         "access_key": "{{user `aws_access_key`}}",
         "secret_key": "{{user `aws_secret_key`}}",
-        "region": "us-east-1",
+        "region": "us-east-2",
         "source_ami_filter": {
             "filters": {
                 "virtualization-type": "hvm",
