@@ -48,7 +48,7 @@
       },
       {
         "type": "file",
-        "source": "goss/goss.yml",
+        "source": "goss.yml",
         "destination": "/tmp/goss.yml"
       },
       {

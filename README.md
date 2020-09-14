@@ -29,7 +29,7 @@ _do not_ leave this server running until security has been improved
 
 ## goss
 
-server validation is run with `goss`.  Goss is installed via [benmangold/install-goss-role](https://github.com/benmangold/install-goss-role) in `ubuntu/ansible/playbook.yml`:
+server validation is run with `goss`.  Goss configs found at `goss/goss.yml`.  Goss is installed via [benmangold/install-goss-role](https://github.com/benmangold/install-goss-role) in `ubuntu/ansible/playbook.yml`:
 
 ```ansible
     ...
