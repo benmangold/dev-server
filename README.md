@@ -14,6 +14,8 @@ configured via [benmangold/dev-server-role](https://github.com/benmangold/dev-se
 
 ## build scripts
 
+requires `AWS_ACCESS_KEY_ID`  and `AWS_SECRET_ACCESS_KEY` to be available in environment
+
 ### packer
 
 validate packer json, and then build a new ami with packer (packer calls ansible)
@@ -78,40 +80,7 @@ initial terraform configs are ripped out of [benmangold/tf-up-and-running](https
 
 _do not_ leave this server running until security has been improved
 
-## goss
-
-server validation is run with `goss`.  Goss configs found at `goss/goss.yml`.  Goss is installed via [benmangold/install-goss-role](https://github.com/benmangold/install-goss-role) in `ubuntu/ansible/playbook.yml`:
-
-```ansible
-    ...
-    - name: Goss Install
-      import_role:
-        name: install-goss-role
-    ...
-```
-
-then, goss/goss.yml is copied and validated via Packer provisioners in `ubuntu/ubuntu-ami.json`:
-
-```json
-    ...
-      {
-        "type": "file",
-        "source": "goss/goss.yml",
-        "destination": "/tmp/goss.yml"
-      },
-      {
-        "type": "shell",
-        "inline":[
-            "goss --gossfile=/tmp/goss.yml validate"
-        ]
-      },
-    ...
-
-```
-
 ## commands
-
-requires `AWS_ACCESS_KEY_ID`  and `AWS_SECRET_ACCESS_KEY` to be available in environment
 
 ### packer commands
 
