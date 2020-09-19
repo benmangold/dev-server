@@ -18,11 +18,12 @@ jobs:
         with:
           python-version: '3.6.9'
 
-      - name: Install dependencies
+      - name: Install Ansible
         run: |
           pip install ansible
-      - name: Packer build
-        run: packer build ubuntu/ubuntu-ami.json
+          
+      - name: Packer - Build AMI
+        run: make build
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

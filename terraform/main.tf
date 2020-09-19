@@ -9,6 +9,18 @@ terraform {
     }
 }
 
+
+variable "server_port" {
+    description = "The port used by the server for HTTP requests"
+    type = number
+    default = 8080
+}
+
+variable "key_name" {
+    description = "AWS key name used for SSH access"
+    type = string
+}
+
 provider "aws" {
     region = "us-east-2"
 }
@@ -21,16 +33,11 @@ data "aws_subnet_ids" "default" {
     vpc_id = data.aws_vpc.default.id
 }
 
-variable "server_port" {
-    description = "The port used by the server for HTTP requests"
-    type = number
-    default = 8080
-}
 
 resource "aws_launch_configuration" "example" {
     image_id = "ami-03b3817c5ba904afe"
     instance_type = "t2.medium"
-    key_name = "dev-server"
+    key_name = var.key_name
     security_groups = [aws_security_group.instance.id]
     user_data = <<-EOF
         #!/bin/bash
