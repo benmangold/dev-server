@@ -30,7 +30,7 @@ variable "server_port" {
 resource "aws_launch_configuration" "example" {
     image_id = "ami-03b3817c5ba904afe"
     instance_type = "t2.medium"
-    key_name = "dev-server"
+    key_name = "lemur-pro"
     security_groups = [aws_security_group.instance.id]
     user_data = <<-EOF
         #!/bin/bash
