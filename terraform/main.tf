@@ -35,7 +35,7 @@ data "aws_subnet_ids" "default" {
 
 
 resource "aws_launch_configuration" "example" {
-    image_id = "ami-03b3817c5ba904afe"
+    image_id = "ami-0a5952b822ae22445"
     instance_type = "t2.medium"
     key_name = var.key_name
     security_groups = [aws_security_group.instance.id]
