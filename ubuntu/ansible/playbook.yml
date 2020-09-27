@@ -1,6 +1,7 @@
 ---
 - name: Provision Ubuntu
   hosts: all
+  user: ubuntu
   gather_facts: yes
   become: yes
 
@@ -9,6 +10,7 @@
 
   tasks:
     - name: Dev Env Install
+      become: yes
       import_role:
         name: dev-server-role
 

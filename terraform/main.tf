@@ -9,7 +9,6 @@ terraform {
     }
 }
 
-
 variable "server_port" {
     description = "The port used by the server for HTTP requests"
     type = number
@@ -33,9 +32,8 @@ data "aws_subnet_ids" "default" {
     vpc_id = data.aws_vpc.default.id
 }
 
-
 resource "aws_launch_configuration" "example" {
-    image_id = "ami-0a5952b822ae22445"
+    image_id = "ami-00fb6d1db7d8a2dbd"
     instance_type = "t2.medium"
     key_name = var.key_name
     security_groups = [aws_security_group.instance.id]
