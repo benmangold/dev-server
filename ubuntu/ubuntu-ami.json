@@ -48,19 +48,25 @@
       },
       {
         "type": "file",
-        "source": "goss.yml",
-        "destination": "/tmp/goss.yml"
+        "source": "goss",
+        "destination": "/tmp"
       },
       {
         "type": "shell",
         "inline":[
-            "goss --gossfile=/tmp/goss.yml validate"
+            "sudo cp -r /tmp/goss /etc/"
+        ]
+      },
+      {
+        "type": "shell",
+        "inline":[
+            "goss --gossfile=/etc/goss/goss.yml validate"
         ]
       },
       {
           "type": "shell",
           "inline":[
-              "sudo systemctl reboot"
+              "sudo reboot"
           ],
           "expect_disconnect": true
       },
