@@ -4,7 +4,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - main, galaxy-workflow
 
 jobs:
   packer:
@@ -21,8 +21,11 @@ jobs:
       - name: Install Ansible
         run: |
           pip install ansible
-          
+      
       - name: Packer - Build AMI
+      - uses: webfactory/ssh-agent@v0.4.0
+        with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
         run: make build
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
