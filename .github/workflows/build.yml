@@ -21,7 +21,12 @@ jobs:
       - name: Install Ansible
         run: |
           pip install ansible
+      
           
+      - uses: webfactory/ssh-agent@v0.4.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
       - name: Packer - Build AMI
         run: make build
         env:
