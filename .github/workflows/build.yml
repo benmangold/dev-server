@@ -4,7 +4,7 @@ name: Build
 on:
   push:
     branches:
-      - galaxy-workflow
+      - main
 
 jobs:
   packer:
