@@ -1,17 +1,7 @@
 #!/usr/bin/env make
 
 ##
-## terraform and script configuration
-##
-
-export TF_VAR_ami_id=ami-0c709a9ae6faff49c
-
-export TF_VAR_aws_region=us-east-2
-
-export TF_VAR_name_tag=dev-server
-
-##
-## make commands
+## make commands - packer
 ##
 
 packer: validate build
@@ -21,6 +11,20 @@ validate:
 
 build:
 	packer build ubuntu/ubuntu-ami.json
+
+##
+## terraform and scripts configuration
+##
+
+export TF_VAR_ami_id=ami-0c709a9ae6faff49c
+
+export TF_VAR_aws_region=us-east-2
+
+export TF_VAR_name_tag=dev-server
+
+##
+## make commands - terraform and scripts
+##
 
 init:
 	cd terraform; terraform init;
