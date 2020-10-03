@@ -7,5 +7,3 @@
 export PUBLIC_DNS=$(aws ec2 describe-instances --filters Name=instance-state-name,Values=running Name=tag:Name,Values=$TF_VAR_name_tag --region=$TF_VAR_aws_region | jq -r .Reservations[].Instances[].PublicDnsName)
 
 echo $PUBLIC_DNS
-
-ssh -A ubuntu@$PUBLIC_DNS

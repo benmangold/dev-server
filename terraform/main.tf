@@ -15,13 +15,24 @@ variable "server_port" {
     default = 8080
 }
 
+variable "name_tag" {
+    description = "name applied to resources and tags, sometimes used in utility script queries"
+    type = string
+}
+
 variable "key_name" {
     description = "AWS key name used for SSH access"
     type = string
 }
 
-provider "aws" {
-    region = "us-east-2"
+variable "aws_region" {
+    description = "AWS region"
+    type = string
+}
+
+variable "ami_id" {
+    description = "AWS AMI ID used in launch configuration"
+    type = string
 }
 
 data "aws_vpc" "default" {
@@ -32,8 +43,12 @@ data "aws_subnet_ids" "default" {
     vpc_id = data.aws_vpc.default.id
 }
 
+provider "aws" {
+    region = var.aws_region
+}
+
 resource "aws_launch_configuration" "example" {
-    image_id = "ami-023e0f930dc46bc05"
+    image_id = var.ami_id
     instance_type = "t2.medium"
     key_name = var.key_name
     security_groups = [aws_security_group.instance.id]
@@ -48,7 +63,7 @@ resource "aws_launch_configuration" "example" {
 }
 
 resource "aws_lb" "example" {
-    name = "terraform-asg-example"
+    name = var.name_tag
     load_balancer_type = "application"
     subnets = data.aws_subnet_ids.default.ids
     security_groups = [aws_security_group.alb.id]
@@ -70,7 +85,7 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_security_group" "alb" {
-    name = "terraform-example-alb"
+    name = "terraform-alb"
 
     ingress {
         from_port  = 80
@@ -97,7 +112,7 @@ resource "aws_security_group" "alb" {
 }
 
 resource "aws_lb_target_group" "asg" {
-    name = "terraform-asg-example"
+    name = var.name_tag
     port = var.server_port
     protocol = "HTTP"
     vpc_id = data.aws_vpc.default.id
@@ -125,7 +140,7 @@ resource "aws_autoscaling_group" "example" {
 
     tag {
         key = "Name"
-        value = "terraform-asg-example"
+        value = var.name_tag
         propagate_at_launch = true
     }
 }
@@ -147,7 +162,7 @@ resource "aws_lb_listener_rule" "asg" {
 }
 
 resource "aws_security_group" "instance" {
-    name = "terraform-example-instance"
+    name = "terraform-instance"
     ingress {
         from_port = var.server_port
         to_port = var.server_port

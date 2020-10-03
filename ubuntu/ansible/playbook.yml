@@ -1,4 +1,5 @@
 ---
+
 - name: Provision Ubuntu
   hosts: all
   gather_facts: yes
@@ -8,6 +9,7 @@
     - ./variables.yml
 
   tasks:
+
     - name: Dev Env Install
       import_role:
         name: dev-server-role
