@@ -35,16 +35,16 @@ variable "ami_id" {
     type = string
 }
 
-provider "aws" {
-    region = var.aws_region
-}
-
 data "aws_vpc" "default" {
     default = true
 }
 
 data "aws_subnet_ids" "default" {
     vpc_id = data.aws_vpc.default.id
+}
+
+provider "aws" {
+    region = var.aws_region
 }
 
 resource "aws_launch_configuration" "example" {
