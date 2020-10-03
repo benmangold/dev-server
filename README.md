@@ -21,6 +21,12 @@ requires `AWS_ACCESS_KEY_ID`  and `AWS_SECRET_ACCESS_KEY` to be available in env
 validate packer json, and then build a new ami with packer (packer calls ansible)
 
 ```bash
+make packer
+```
+
+is the same as:
+
+```bash
 make validate
 make build
 
