@@ -2,7 +2,7 @@
 
 - src: git@github.com:benmangold/dev-server-role.git
   scm: git
-  version: v0.0.3
+  version: v0.0.4
 
 - src: git@github.com:benmangold/install-goss-role.git
   scm: git

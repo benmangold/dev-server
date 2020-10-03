@@ -1,81 +1,82 @@
 {
-    "variables": {
-        "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
-        "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-        "aws_region": "us-east-2",
-        "ami_name": "dev-server-{{timestamp}}",
-        "disk_size": "25",
-        "instance_type": "t2.medium"
-    },
-    "sensitive-variables": [
-        "aws_secret_key"
-    ],
-    "builders": [
-      {
-        "type": "amazon-ebs",
-        "access_key": "{{user `aws_access_key`}}",
-        "secret_key": "{{user `aws_secret_key`}}",
-        "region": "us-east-2",
-        "source_ami_filter": {
-            "filters": {
-                "virtualization-type": "hvm",
-                "name": "ubuntu/images/*ubuntu-bionic-18.04-amd64-server-*",
-                "root-device-type": "ebs"
-            },
-            "owners": ["099720109477"],
-            "most_recent": true
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "aws_region": "us-east-2",
+    "ami_name": "dev-server-{{timestamp}}",
+    "disk_size": "25",
+    "instance_type": "t2.medium"
+  },
+  "sensitive-variables": [
+    "aws_secret_key"
+  ],
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "us-east-2",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "ubuntu/images/*ubuntu-bionic-18.04-amd64-server-*",
+          "root-device-type": "ebs"
         },
-        "instance_type":  "{{user `instance_type`}}",
-        "ssh_username": "ubuntu",
-        "ami_name": "{{user `ami_name`}}"
-      }
-    ],
-    "provisioners": [
-      {
-        "type": "shell",
-        "inline":
-          "sleep 30"
+        "owners": [
+          "099720109477"
+        ],
+        "most_recent": true
       },
-      {
-        "type": "ansible",
-        "playbook_file": "ubuntu/ansible/playbook.yml",
-        "galaxy_file": "ubuntu/ansible/requirements.yml",
-        "galaxy_force_install": "true",
-        "extra_arguments": [
-            "-e",
-            "ansible_python_interpreter=/usr/bin/python3"
-        ]
-      },
-      {
-        "type": "file",
-        "source": "goss",
-        "destination": "/tmp"
-      },
-      {
-        "type": "shell",
-        "inline":[
-            "sudo cp -r /tmp/goss /etc/"
-        ]
-      },
-      {
-        "type": "shell",
-        "inline":[
-            "goss --gossfile=/etc/goss/goss.yml validate"
-        ]
-      },
-      {
-          "type": "shell",
-          "inline":[
-              "sudo reboot"
-          ],
-          "expect_disconnect": true
-      },
-      {
-          "type": "shell",
-          "inline": [
-              "echo 'System rebooted, done provisioning'"
-          ],
-          "pause_before": "1m"
-      }
-    ]
+      "instance_type": "{{user `instance_type`}}",
+      "ssh_username": "ubuntu",
+      "ami_name": "{{user `ami_name`}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": "sleep 30"
+    },
+    {
+      "type": "ansible",
+      "playbook_file": "ubuntu/ansible/playbook.yml",
+      "galaxy_file": "ubuntu/ansible/requirements.yml",
+      "galaxy_force_install": "true",
+      "extra_arguments": [
+        "-e",
+        "ansible_python_interpreter=/usr/bin/python3"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "goss",
+      "destination": "/tmp"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo cp -r /tmp/goss /etc/"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "goss --gossfile=/etc/goss/goss.yml validate"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo reboot"
+      ],
+      "expect_disconnect": true
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "echo 'System rebooted, done provisioning'"
+      ],
+      "pause_before": "1m"
+    }
+  ]
 }
