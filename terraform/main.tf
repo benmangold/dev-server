@@ -25,7 +25,7 @@ variable "key_name" {
     type = string
 }
 
-variable "region" {
+variable "aws_region" {
     description = "AWS region"
     type = string
 }
@@ -36,7 +36,7 @@ variable "ami_id" {
 }
 
 provider "aws" {
-    region = var.region
+    region = var.aws_region
 }
 
 data "aws_vpc" "default" {
