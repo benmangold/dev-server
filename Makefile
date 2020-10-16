@@ -16,7 +16,7 @@ build:
 ## terraform and scripts configuration
 ##
 
-export TF_VAR_ami_id=ami-0c709a9ae6faff49c
+export TF_VAR_ami_id=ami-0a19861ae0360586d
 
 export TF_VAR_aws_region=us-east-2
 
